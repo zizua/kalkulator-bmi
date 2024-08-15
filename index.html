@@ -3,10 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>IndeksSehat | Kalkulator BMI</title>
 
+    <!-- Tambahkan Google Font Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="css\style.css" />
   </head>
+
   <body>
     <header>
       <h1 class="main-title">IndeksSehat | Kalkulator BMI</h1>
@@ -21,55 +28,160 @@
             Di IndeksSehat, kami memahami pentingnya menjaga kesehatan tubuh dan memiliki panduan yang tepat untuk mencapai keseimbangan yang optimal. Oleh karena itu, kami menghadirkan kalkulator Indeks Massa Tubuh (BMI) yang mudah
             digunakan, dirancang khusus untuk membantu Anda memantau kesehatan tubuh Anda. <br /><br />
             Dengan hanya memasukkan beberapa informasi sederhana, seperti tinggi dan berat badan, IndeksSehat akan memberikan Anda gambaran akurat tentang kondisi tubuh Anda saat ini. Apakah Anda berada dalam kisaran berat badan ideal, atau
-            mungkin perlu sedikit penyesuaian untuk mencapai keseimbangan yang lebih baik, IndeksSehat siap membantu. <br /><br />
-            Mulailah perjalanan Anda menuju kesehatan yang lebih baik bersama kami. Ukur, evaluasi, dan buat keputusan yang lebih baik dengan IndeksSehat.
+            mungkin perlu sedikit penyesuaian untuk mencapai keseimbangan yang lebih baik, IndeksSehat siap membantu. <br />
           </p>
+
+          <p></p>
         </article>
 
-        <form>
-          <div>
+        <form id="bmi-form">
+          <div class="form-group">
             <h3>Jenis Kelamin</h3>
-            <input type="radio" id="laki-laki" name="jenis-kelamin" value="laki-laki" /><label for="laki-laki">Laki-Laki</label> <input type="radio" id="perempuan" name="jenis-kelamin" value="perempuan" /><label for="perempuan"
-              >Perempuan</label
-            >
+            <div class="icon-container">
+              <input type="radio" id="laki-laki" name="jenis-kelamin" value="laki-laki" /><label for="laki-laki">Laki-Laki</label> <input type="radio" id="perempuan" name="jenis-kelamin" value="perempuan" /><label for="perempuan"
+                >Perempuan</label
+              >
+            </div>
           </div>
 
-          <div>
-            <h3>Berat Barat</h3>
-            <input type="number" />
+          <div class="form-group">
+            <h3>Tinggi Badan (cm)</h3>
+            <div class="input-container">
+              <i class="fas fa-pencil-alt"></i>
+              <input type="number" id="tinggi-badan" placeholder="Masukkan tinggi badan Anda" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h3>Usia (tahun)</h3>
+            <div class="input-container">
+              <i class="fas fa-pencil-alt"></i>
+              <input type="number" id="usia" placeholder="Masukkan usia Anda" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h3>Berat Badan (kg)</h3>
+            <div class="input-container">
+              <i class="fas fa-pencil-alt"></i>
+              <input type="number" id="berat-badan" placeholder="Masukkan berat badan Anda" required />
+            </div>
           </div>
 
           <div class="form-btn-container">
-            <button class="button bg-lightseagreen">Hitung BMI</button>
-            <button class="button bg-reset">Reset</button>
+            <button type="submit" class="button bg-lightseagreen">Hitung BMI</button>
+            <button type="reset" class="button bg-reset">Reset</button>
           </div>
         </form>
 
         <article>
           <header>
-            <h2>Form Information</h2>
+            <h2>Keunggulan Fitur</h2>
           </header>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus cumque provident. Optio aliquid accusantium error nemo, ipsa in omnis natus inventore fuga doloremque sapiente harum cupiditate culpa vero. Obcaecati.
+            IndeksSehat menawarkan sejumlah keunggulan fitur yang dirancang untuk memberikan pengalaman terbaik bagi pengguna:
+            <br /><br />
+            1. Menghitung Berat Badan: Kalkulator BMI kami memberikan hasil yang akurat berdasarkan data tinggi dan berat badan yang Anda masukkan.
+            <br /><br />
+            2. Menentukan Kategori Berat Badan Ideal: Setelah perhitungan BMI, Anda akan mengetahui apakah berat badan Anda termasuk dalam kategori ideal atau tidak.
+            <br /><br />
+            3. Mempersiapkan Program yang Diperlukan: Kami juga memberikan saran program, baik untuk menurunkan berat badan jika Anda kegemukan maupun menaikkan berat badan jika Anda terlalu kurus.
           </p>
         </article>
       </aside>
 
       <!-- halaman kanan -->
-      <aside>
-        <section>
+      <aside id="result-container">
+        <!-- Card untuk menampilkan hasil BMI -->
+        <div class="result-card">
+          <h2>Hasil BMI Anda</h2>
+          <p><strong></strong> ${bmi.toFixed(2)}</p>
+          <p><strong>Anda memiliki berat badan </strong> ${kategori}</p>
+          <p><strong>BMI:</strong> ${bmi.toFixed(2)}</p>
+          <!-- Button untuk download hasil BMI -->
+          <button class="button bg-lightseagreen">Download Hasil BMI</button>
+        </div>
+
+        <!-- Card tentang penyakit atau resiko -->
+        <div class="info-card">
+          <h4>Risiko Kesehatan pada Orang Kurus:</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus cumque provident. Optio aliquid accusantium error nemo, ipsa in omnis natus inventore fuga doloremque sapiente harum cupiditate culpa vero. Obcaecati.
-            <br /><br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus cumque provident. Optio aliquid accusantium error nemo, ipsa in omnis natus inventore fuga doloremque sapiente harum cupiditate culpa vero. Obcaecati
+            - Malnutrisi: Kekurangan vitamin dan mineral yang diperlukan untuk fungsi tubuh yang optimal.
+            <br />
+            - Kehilangan Massa Otot: Penurunan kekuatan dan mobilitas, meningkatkan risiko cedera.
+            <br />
+            - Gangguan Fungsi Imun: Meningkatkan kerentanan terhadap infeksi dan penyakit.
+            <br />
+            - Osteoporosis: Risiko kepadatan tulang yang menurun, mengarah pada peningkatan risiko patah tulang.
+            <br />
+            - Masalah Kesehatan Mental: Mungkin mengalami gangguan kecemasan dan depresi terkait citra tubuh.
           </p>
-        </section>
+          <br />
+        </div>
+
+        <div class="info-card">
+          <h4>Keseimbangan Berat Badan yang Sehat:</h4>
+          <p>
+            - Pola Makan Seimbang: Mengonsumsi berbagai makanan bergizi untuk memenuhi kebutuhan gizi.
+            <br />
+            - Aktivitas Fisik Rutin: Latihan secara teratur untuk meningkatkan metabolisme dan kesehatan umum.
+            <br />
+            - Konsultasi Medis: Mendapatkan saran dari profesional kesehatan mengenai berat badan ideal.
+            <br />
+            - Kesadaran Kesehatan Mental: Memperhatikan kesehatan mental dan citra tubuh dalam proses menjaga berat badan.
+          </p>
+          <br />
+        </div>
+
+        <div class="info-card">
+          <h4>Risiko Kesehatan pada Obesitas:</h4>
+          <p>
+            - Penyakit Jantung: Meningkatkan risiko penyakit kardiovaskular dan serangan jantung.
+            <br />
+            - Diabetes Tipe 2: Resistensi insulin yang dapat berkembang menjadi diabetes.
+            <br />
+            - Hipertensi: Tekanan darah tinggi yang dapat menyebabkan komorbiditas serius.
+            <br />
+            - Kanker: Risiko lebih tinggi untuk beberapa jenis kanker, seperti kanker payudara dan kolorektal.
+            <br />
+            - Masalah Pernapasan: Terjadinya sleep apnea dan masalah pernapasan lainnya.
+            <br />
+            - Osteoartritis: Nyeri sendi akibat beban ekstra yang ditanggung oleh sendi.
+          </p>
+        </div>
+
+        <!-- Saran Konsultasi -->
+        <p>
+          Kami sangat mendorong Anda untuk melakukan konsultasi lebih lanjut dengan dokter atau ahli gizi untuk mendapatkan informasi yang lebih spesifik dan akurat mengenai resiko dan kekhawatiran terhadap berat badan Anda. Mereka dapat
+          memberikan saran yang tepat berdasarkan kondisi kesehatan Anda dan membantu Anda dalam membuat keputusan yang sehat.
+        </p>
+
+        <!-- Button Registrasi Konsultasi Online -->
+        <div class="action-buttons">
+          <button class="button bg-lightseagreen">Konsultasi Ahli Gizi Via Aplikasi</button>
+          <button class="button bg-reset">Registrasi Online Ahli Gizi</button>
+        </div>
+
+        <!-- Gambar download aplikasi -->
+        <div class="center-container">
+          <h2>Download Aplikasi</h2>
+          <div class="app-download">
+            <a href="#" target="_blank">
+              <img src="img/logo-playstore.png" alt="Download di Play Store" class="app-image" />
+            </a>
+            <a href="#" target="_blank">
+              <img src="img/logo-appstore.png" alt="Download di App Store" class="app-image" />
+            </a>
+          </div>
+        </div>
       </aside>
     </main>
 
     <footer>
-      <p>Made by Zizu</p>
+      <p>Made by <span>Zizu</span></p>
     </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
